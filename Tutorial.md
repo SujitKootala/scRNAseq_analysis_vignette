@@ -333,7 +333,7 @@ Next, in order to do annotation in a more unbiased way, we should firstly identi
 ```R
 cl_markers <- FindAllMarkers(seurat, only.pos = TRUE, min.pct = 0.25, logfc.threshold = log(1.2))
 library(dplyr)
-cl_markers %>% group_by(cluster) %>% top_n(n = 2, wt = avg_logFC)
+cl_markers %>% group_by(cluster) %>% top_n(n = 2, wt = avg_log2FC)
 ```
 <img src="images/top2_cl_markers.png" align="centre" /><br/><br/>
 Because of the nature of large sample size in scRNA-seq data (one cell is one sample), it is strongly recommended to not only look at p-values, but also detection rate of the gene in the cluster (```pct```) and fold change (```logfc```) between cells in and outside the cluster. That's why there are options ```min.pct``` and ```logfc.threshold``` in the function to require threshold on the effect size.
